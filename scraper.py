@@ -2,6 +2,7 @@ import os
 import time
 import requests
 from selenium import webdriver
+import pdb
 
 
 def fetch_image_urls(query: str, max_links_to_fetch: int, wd: webdriver, sleep_between_interactions: int = 1):
@@ -37,7 +38,7 @@ def fetch_image_urls(query: str, max_links_to_fetch: int, wd: webdriver, sleep_b
                 continue
 
             # extract image urls
-            actual_images = wd.find_elements_by_css_selector('img.n3VNCb')
+            actual_images = wd.find_elements_by_css_selector('img.sFlh5c')
             for actual_image in actual_images:
                 if actual_image.get_attribute('src') and 'http' in actual_image.get_attribute('src'):
                     image_urls.add(actual_image.get_attribute('src'))
@@ -101,7 +102,7 @@ def search_and_download(search_term: str, driver_path: str, target_path='./image
 
 
 DRIVER_PATH = r'chromedriver.exe'
-search_term = 'trump'
+search_term = 'elon musk'
 # num of images you can pass it from here  by default it's 10 if you are not passing
 #number_images = 50
-search_and_download(search_term=search_term, driver_path=DRIVER_PATH, number_images=50)
+search_and_download(search_term=search_term, driver_path=DRIVER_PATH, number_images=10)
